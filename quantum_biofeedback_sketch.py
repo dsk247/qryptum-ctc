@@ -9,7 +9,7 @@ class QuantumEncryption:
     
     def generate_quantum_key(self, length=16):
         qc = QuantumCircuit(length, length)
-        qc.h(range(length))  # Apply Hadamard gate for superposition
+        qc.h(range(length)) 
         qc.measure(range(length), range(length))
         
         job = execute(qc, self.backend, shots=1)
