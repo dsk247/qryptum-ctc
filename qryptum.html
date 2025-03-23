@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qryptum - Secure Biofeedback Authentication System</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            padding: 20px; 
+            background-color: #f4f4f4; 
+        }
+        header { 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        header h1 { 
+            font-size: 2.5em; 
+            color: #333; 
+        }
+        header p { 
+            font-size: 1.2em; 
+            color: #666; 
+        }
+        section { 
+            margin: 20px 0; 
+        }
+        section h2 { 
+            font-size: 2em; 
+            margin-bottom: 10px; 
+        }
+        section p { 
+            font-size: 1.1em; 
+            color: #444; 
+        }
+        #biofeedbackBarContainer {
+            width: 100%;
+            height: 30px;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+        #biofeedbackBar {
+            height: 100%;
+            background-color: #ddd;
+            width: 0%; /* Initially set to 0% */
+            transition: width 0.3s ease;
+        }
+        button { 
+            background-color: #4CAF50; 
+            color: white; 
+            padding: 10px 20px; 
+            font-size: 1.2em; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px; 
+        }
+        button:hover { 
+            background-color: #45a049; 
+        }
+        footer { 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #888; 
+        }
+        #statusMessage {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Qryptum</h1>
+        <p>Your Secure Biofeedback Authentication System</p>
+    </header>
+    
+    <section id="howItWorks">
+        <h2>How It Works</h2>
+        <p>Qryptum integrates quantum encryption with real-time biometric data to provide a highly secure and customized authentication experience.</p>
+        <button id="demoBtn">Try the Demo</button>
+    </section>
+
+    <section id="biofeedback">
+        <h2>Biofeedback Demo</h2>
+        <p>Authenticating via brainwave intensity... Click "Try the Demo" to begin.</p>
+        <div id="biofeedbackBarContainer">
+            <div id="biofeedbackBar"></div>
+        </div>
+        <div id="statusMessage"></div>
+    </section>
+
+    <footer>
+        <p>© 2025 Qryptum. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const demoBtn = document.getElementById('demoBtn');
+        const biofeedbackBar = document.getElementById('biofeedbackBar');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // Function to simulate brainwave intensity from an EEG scanner
+        function simulateEEG() {
+            return Math.floor(Math.random() * (100 - 30 + 1)) + 30; // Random value between 30 and 100 (simulating real-time EEG data)
+        }
+
+        // Function to simulate biofeedback verification
+        function verifyBiofeedback(brainwaveIntensity) {
+            const randomOutcome = Math.random(); // Random number between 0 and 1 for 50/50 chance
+
+            // If the random outcome is below 0.5, success, else failure
+            const isAuthenticated = randomOutcome < 0.5;
+
+            // Simulate the biofeedback bar's width change
+            const biofeedbackPercentage = Math.min(brainwaveIntensity / 100, 100); // Scale it to a 100% width range
+            biofeedbackBar.style.width = `${biofeedbackPercentage}%`;
+
+            if (isAuthenticated) {
+                biofeedbackBar.style.backgroundColor = '#4CAF50'; // Green for success
+                statusMessage.textContent = "Authentication Successful";
+                statusMessage.style.color = "#4CAF50"; // Green text
+            } else {
+                biofeedbackBar.style.backgroundColor = '#FF4D4D'; // Red for denied
+                statusMessage.textContent = "Access Denied";
+                statusMessage.style.color = "#FF4D4D"; // Red text
+            }
+
+            // Display the brainwave intensity value
+            alert(`Your brainwave intensity: ${brainwaveIntensity}\nAuthentication attempt complete.`);
+        }
+
+        // Event listener for the demo button
+        demoBtn.addEventListener('click', () => {
+            const username = prompt("Enter your username:");
+            if (username) {
+                const brainwaveIntensity = simulateEEG(); // Get simulated EEG data
+                alert(`Hello, ${username}!`);
+                verifyBiofeedback(brainwaveIntensity);
+            } else {
+                alert("Username is required!");
+            }
+        });
+    </script>
+</body>
+</html>
