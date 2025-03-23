@@ -4,9 +4,6 @@ import random
 from qiskit import QuantumCircuit, Aer, transpile, assemble, execute
 import orkes
 from orkes import Task, Workflow
-
-# Assuming Orkes is set up in your environment
-
 class QuantumEncryption:
     def __init__(self):
         self.backend = Aer.get_backend('qasm_simulator')
@@ -45,7 +42,7 @@ class BiofeedbackAuthOrkes:
         encrypted_feedback = self.qe.encrypt(biofeedback, key)
         return encrypted_feedback, key
 
-# Create Orkes Tasks for each operation
+# This is to create Orkes Tasks for each operation in the code
 class OrkesBiofeedbackWorkflow(Workflow):
     @Task
     def capture_biofeedback(self):
@@ -55,7 +52,7 @@ class OrkesBiofeedbackWorkflow(Workflow):
     def authenticate(self, biofeedback):
         return BiofeedbackAuthOrkes().authenticate(biofeedback)
 
-# Running the Orkes Workflow
+# Then we will run the Orkes Workflow
 workflow = OrkesBiofeedbackWorkflow()
 biofeedback_data = workflow.capture_biofeedback()
 encrypted_data, key = workflow.authenticate(biofeedback_data)
