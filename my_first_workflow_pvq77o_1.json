@@ -1,0 +1,62 @@
+{
+  "createTime": 1742771236853,
+  "updateTime": 0,
+  "name": "my_first_workflow_pvq77o",
+  "description": "This is a simple workflow to test the connection my_first_simple_task worker",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "Quantum_Biofeedback_Authentication",
+      "taskReferenceName": "my_first_simple_task_ref",
+      "inputParameters": {
+        "name": "${workflow.input.name}"
+      },
+      "type": "SIMPLE",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": [],
+      "onStateChange": {},
+      "permissive": false
+    },
+    {
+      "name": "collect_biofeedback",
+      "taskReferenceName": "simple_ref",
+      "type": "SIMPLE"
+    },
+    {
+      "name": "preprocess_biofeedback",
+      "taskReferenceName": "simple_ref_1",
+      "type": "SIMPLE"
+    },
+    {
+      "name": "quantum_encrypt",
+      "taskReferenceName": "simple_ref_2",
+      "type": "SIMPLE"
+    },
+    {
+      "name": "ai_validate",
+      "taskReferenceName": "simple_ref_3",
+      "type": "SIMPLE"
+    }
+  ],
+  "inputParameters": [
+    "name"
+  ],
+  "outputParameters": {},
+  "failureWorkflow": "",
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "ownerEmail": "snowssundae@gmail.com",
+  "timeoutPolicy": "ALERT_ONLY",
+  "timeoutSeconds": 0,
+  "variables": {},
+  "inputTemplate": {},
+  "enforceSchema": true
+}
